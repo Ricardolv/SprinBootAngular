@@ -16,9 +16,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-//@EntityScan(basePackages = "com.richard.api.ws.model")
-//@EnableJpaRepositories(basePackages = {"com.richard.api.ws.repository"})
-//@ComponentScan(basePackages = {"com.richard.api.ws.controller"})
 public class ApiWebApplication {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
