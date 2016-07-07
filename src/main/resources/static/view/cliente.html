@@ -1,0 +1,17 @@
+<div ng-controller="clienteController">       
+    Opa {{ cliente.nome}} <br/>
+
+    <input id="nome" type="text" ng-model="cliente.nome" />
+
+    <input type="button" value="Salvar" ng-click="salvarCliente()" />
+    <input type="button" value="Cancelar" ng-click="cancelCliente()" />
+
+    <br />
+    <div ng-repeat=" c in clientes">
+
+        {{ c.nome}}
+        <input type="button" value="Excluir" ng-click="deleteCliente(c)" />
+        <input type="button" value="Alterar" ng-click="updateCliente(c)" />
+        <a href="clientes/{{c.id}}"> Detalhe</a>
+    </div>
+</div>

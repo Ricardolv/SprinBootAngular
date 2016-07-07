@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <title>TODO supply a title</title>
+        <base href="/" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script>
-            
-            //<![CDATA[
-            function carregarDados() {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        document.getElementById("display").innerHTML = xhttp.responseText;
-                    }
-                };
-                xhttp.open("GET", "http://localhost:8080/clientes", true);
-                xhttp.send();
-            }
-            //]]>
-            
-        </script>
-
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+        
+        <script src="./js/app.js"></script>
+        
+        <script src="./js/controller/cliente-controller.js"></script>
+        <script src="./js/controller/cliente-detalhe-controller.js"></script>
+        
+        
+        <script src="./js/controller/cidade-controller.js"></script>
+        <script src="./js/controller/estado-controller.js"></script>
+        
+    
     </head>
     <body>
-        <button type="button" onclick="carregarDados()"> Carregar </button>
         
-        <div id="display">
+        <a href="/clientes">Clientes</a>
+        <a href="/cidades">Cidade</a>
+        <a href="/estados">Estado</a>
+        
+        <div ng-view="ng-view">
+            
             
         </div>
+        
         
     </body>
 </html>

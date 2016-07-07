@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.richard.api.ws.controller;
 
 import com.richard.api.ws.model.Cliente;
@@ -28,16 +23,14 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
     
-    @RequestMapping(method = RequestMethod.POST, value = "/clientes", 
-                             consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/clientes", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Cliente> cadastrar(@RequestBody Cliente cliente) {
        
         Cliente client = clienteService.save(cliente);
         return new ResponseEntity<>(client, HttpStatus.CREATED);
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "/clientes", 
-                             produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<Cliente>> buscarTodos() {
         
         Collection clients = clienteService.buscarTodos();
@@ -62,6 +55,18 @@ public class ClienteController {
     public ResponseEntity<Cliente> alterar(@RequestBody Cliente cliente) {
        
         Cliente client = clienteService.alterar(cliente);
+        return new ResponseEntity<>(client, HttpStatus.OK);
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/clientes/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+    public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Long id) {
+       
+        Cliente client  = clienteService.buscaPorId(id);
+        
+        if (client == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
