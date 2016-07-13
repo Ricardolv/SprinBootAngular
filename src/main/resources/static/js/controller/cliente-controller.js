@@ -17,15 +17,25 @@ app.controller("clienteController", function ($scope, $http) {
     };
 
     $scope.salvarCliente = function () {
-        $http({method: 'POST', url: 'http://localhost:8080/clientes', data: $scope.cliente})
-                .then(function (response) {
+        
+        if ($scope.frmCliente.$valid) {
+            
+                $http({method: 'POST', url: 'http://localhost:8080/clientes', data: $scope.cliente})
+                    .then(function (response) {
 
-                    carregarClientes();
-                    $scope.cliente = {};
-                }, function (response) {
+                        carregarClientes();
+                        $scope.cliente = {};
+                        
+                        $scope.frmCliente.$setPristine(true);
+                        
+                    }, function (response) {
 
 
-                });
+                    });
+                
+        } else {
+            window.alert("Dados inválidos !");
+        }
     };
 
 
