@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author richard
  */
 @RestController
+@RequestMapping(value="/admin")
 public class ClienteController {
    
     @Autowired

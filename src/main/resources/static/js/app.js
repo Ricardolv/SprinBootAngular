@@ -9,6 +9,9 @@ app.config(function ($locationProvider, $routeProvider) {
             
             .when("/cidades", {templateUrl: 'view/cidade.html', controller: 'cidadeController'})
             .when("/estados", {templateUrl: 'view/estado.html', controller: 'estadoController'})
+            .when("/login", {templateUrl: 'view/login.html', controller: 'loginController'})
+            
+            
             .otherwise({redirectTo: '/'});
 
     // configure html5 to get links working on jsfiddle
